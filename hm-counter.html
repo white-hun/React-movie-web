@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    let counter = 0;
+    // counter 숫자 1을 증가시키는 함수
+    function countUp() {
+      counter = counter + 1;
+      render();
+    }
+
+    // rendering 함수
+    function render() {
+      ReactDOM.render(<Container />, root);
+    }
+    // click할 때 마다 countUp 함수 실행
+    const Container = () => (
+      <div>
+        <h3>Total clicks: {counter}</h3>
+        <button onClick={countUp}>Click me!</button>
+      </div>
+    );
+    render();
+  </script>
+</html>

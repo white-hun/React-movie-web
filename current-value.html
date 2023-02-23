@@ -10,11 +10,15 @@
   <script type="text/babel">
     const root = document.getElementById("root");
     function App() {
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        // 현재 값(counter의 값)을 받아와서 계산
+        setCounter((current) => current + 1);
+      };
       return (
         <div>
-          <h1>Super Converter</h1>
-          <input placeholder="Minutes"></input>
-          <input placeholder="Hours"></input>
+          <h3>practice counter: {counter}</h3>
+          <button onClick={onClick}>practice button</button>
         </div>
       );
     }

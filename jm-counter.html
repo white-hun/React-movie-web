@@ -9,12 +9,19 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
+
     function App() {
+      // state가 바뀌면, 컴포넌트에 바뀐 값만 Rerendering
+      //useState는 value와 function(value가 업데이트될 때 업데이트된 value를 저장)을 가진다
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter(counter + 1);
+      };
+
       return (
         <div>
-          <h1>Super Converter</h1>
-          <input placeholder="Minutes"></input>
-          <input placeholder="Hours"></input>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me!</button>
         </div>
       );
     }
