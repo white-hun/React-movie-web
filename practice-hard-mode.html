@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script>
+    const root = document.getElementById("root");
+    // react로 element 생성(h3)
+    const h3 = React.createElement("h3", null, "practice");
+    // react로 element 생성(button)
+    const btn = React.createElement("button", { onClick: () => console.log("count") }, "practice button");
+    // react로 element 생성(div)
+    // div 안에 h3, button 배치
+    const container = ("div", null, [h3, btn]);
+    // span을 root 안에 배치
+    ReactDOM.render(container, root);
+  </script>
+</html>

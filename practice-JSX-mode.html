@@ -9,24 +9,25 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    let counter = 0;
-    // counter 숫자 1을 증가시키는 함수
-    function countUp() {
-      counter = counter + 1;
-      render();
+    function Title() {
+      return (
+        <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+          practice
+        </h3>
+      );
     }
 
-    // rendering 함수
-    function render() {
-      ReactDOM.render(<Container />, root);
-    }
-    // click할 때 마다 countUp 함수 실행
+    const Button = () => (
+      <button onClick={() => console.log("count")} style={{ backgroundColor: "tomato" }}>
+        practice button
+      </button>
+    );
     const Container = () => (
       <div>
-        <h3>Total clicks: {counter}</h3>
-        <button onClick={countUp}>Click me!</button>
+        <Title />
+        <Button />
       </div>
     );
-    render();
+    ReactDOM.render(<Container />, root);
   </script>
 </html>
