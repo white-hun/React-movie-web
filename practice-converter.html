@@ -9,10 +9,10 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     function MToH() {
-      const [amount, setAmount] = React.useState(0);
+      const [amount, setAmount] = React.useState();
       const [inverted, setInverted] = React.useState(false);
       const onChange = (event) => setAmount(event.target.value);
-      const reset = () => setAmount(0);
+      const reset = () => setAmount();
       const change = () => {
         reset(), setInverted((current) => !current);
       };
@@ -46,12 +46,12 @@
       );
     }
     function KToM() {
-      const [distance, setDistance] = React.useState(0);
+      const [distance, setDistance] = React.useState();
       const [inverted, setInverted] = React.useState(false);
       const onChange = (event) => setDistance(event.target.value);
-      const reset = () => setDistance(0);
+      const reset = () => setDistance();
       const change = () => {
-        reset(), setInverted((current) => !current);
+        setInverted((current) => !current), reset();
       };
       return (
         <div>
