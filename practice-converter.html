@@ -8,16 +8,13 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function MinutesToHours() {
+    function MToH() {
       const [amount, setAmount] = React.useState(0);
       const [inverted, setInverted] = React.useState(false);
-      const onChange = (event) => {
-        setAmount(event.target.value);
-      };
+      const onChange = (event) => setAmount(event.target.value);
       const reset = () => setAmount(0);
-      const onFlip = () => {
-        reset();
-        setInverted((current) => !current);
+      const change = () => {
+        reset(), setInverted((current) => !current);
       };
       return (
         <div>
@@ -33,7 +30,7 @@
             />
           </div>
           <div>
-            <label htmlfor="hours">Hours: </label>
+            <label html="hours">Hours: </label>
             <input
               value={inverted ? amount : Math.round(amount / 60)}
               id="hours"
@@ -43,66 +40,62 @@
               disabled={!inverted}
             />
           </div>
-          <button onClick={reset}>Reset</button>
-          <button onClick={onFlip}>{inverted ? "Turn back" : "Invert"}</button>
+          <button onClick={reset}>Reast</button>
+          <button onClick={change}>{inverted ? "Turn back" : "Invert"}</button>
         </div>
       );
     }
-    function KmToMiles() {
+    function KToM() {
       const [distance, setDistance] = React.useState(0);
       const [inverted, setInverted] = React.useState(false);
       const onChange = (event) => setDistance(event.target.value);
       const reset = () => setDistance(0);
-      const onFlip = () => {
-        reset();
-        setInverted((current) => !current);
+      const change = () => {
+        reset(), setInverted((current) => !current);
       };
       return (
         <div>
           <div>
-            <label htmlfor="km">KM: </label>
+            <label htmlfor="km">Km: </label>
             <input
-              value={inverted ? distance / 0.621371 : distance}
+              value={inverted ? (distance / 0.621371).toFixed(6) : distance}
               id="km"
               placeholder="Km"
               type="number"
               onChange={onChange}
-              disabled={inverted} // false
+              disabled={inverted}
             />
           </div>
           <div>
-            <label html="mile">MILE: </label>
+            <label htmlfor="miles">Miles: </label>
             <input
-              value={inverted ? distance : distance * 0.621371}
-              id="mile"
-              placeholder="Mile"
+              value={inverted ? distance : (distance * 0.621371).toFixed(6)}
+              id="miles"
+              placeholder="Miles"
               type="number"
               onChange={onChange}
-              disabled={!inverted} // true
+              disabled={!inverted}
             />
           </div>
           <button onClick={reset}>Reset</button>
-          <button onClick={onFlip}>{inverted ? "Turn back" : "Invert"}</button>
+          <button onClick={change}>{inverted ? "Turn Back" : "Invert"}</button>
         </div>
       );
     }
     function App() {
       const [index, setIndex] = React.useState("xx");
-      const onSelect = (event) => {
-        setIndex(event.target.value);
-      };
+      const onSelect = (event) => setIndex(event.target.value);
       return (
         <div>
-          <h1>Super Converter</h1>
           <select value={index} onChange={onSelect}>
-            <option value="xx">Select your units</option>
+            <option value="xx">Select Units</option>
             <option value="0">Minutes & Hours</option>
             <option value="1">Km & Miles</option>
           </select>
           <hr />
-          {index === "xx" ? "Please select your unit" : null}
-          {index === "0" ? <MinutesToHours /> : null}
-          {index === "1" ? <KmToMiles /> : null}
+          {index === "xx" ? "Please Select Units" : null}
+          {index === "0" ? <MToH /> : null}
+          {index === "1" ? <KToM /> : null}
         </div>
       );
     }
